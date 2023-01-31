@@ -1,0 +1,8 @@
+{
+  "name": "boilerplate-puppeteer-scraper",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "19.6.2"
+  }
+}

@@ -1,29 +1,39 @@
 /**
- * @name keyboard
+ * @name Recover HTML Table Value
  *
- * @desc recover value of html table and return it as object
+ * @desc Retrieves the value of an HTML table and returns it as an object
  *
  */
 
+// Importing the Puppeteer library
 import puppeteer from 'puppeteer';
 
+// Declaring an async function to run the code
 (async () => {
+    // Launching a new instance of Puppeteer with headless mode set to false
     const browser = await puppeteer.launch({headless: false});
+    // Creating a new page in the instance of Puppeteer
     const page = await browser.newPage();
+    // Navigating to a specified URL
     await page.goto('https://www.textfixer.com/html/html-table-generator.php');
-    let results = []
+    // Initializing an empty array to store the results
+    let results = [];
 
+    // Using page.evaluate to access the page DOM and retrieve the table data
     let table = await page.evaluate(() => {
         let table = {
             headers: [],
             rows: [],
         }
 
+        // Selecting the table headers and storing them in the headers array
         document.querySelector('#newTable > table > tbody').querySelectorAll('th').forEach((e) => {
             table.headers.push(e.innerText);
         })
 
+        // Selecting the table rows, splitting them by tab characters, and storing them in the rows array
         document.querySelector('#newTable > table > tbody').querySelectorAll('tr').forEach((e, i) => {
+            // Skipping the first row (headers)
             if (i === 0) {
                 return;
             }
@@ -34,6 +44,7 @@ import puppeteer from 'puppeteer';
         return table;
     });
 
+    // Looping through the headers and rows to create a final results array
     for (let i = 0; i < table.headers.length; i++) {
         for (let j = 0; j < table.rows.length; j++) {
             results.push({
@@ -43,5 +54,6 @@ import puppeteer from 'puppeteer';
         }
     }
 
+    // Logging the final results array
     console.log(results);
 })();

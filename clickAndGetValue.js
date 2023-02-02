@@ -10,11 +10,13 @@ import puppeteer from 'puppeteer';
 (async () => {
     // Launch a browser in non-headless mode
     const browser = await puppeteer.launch({headless: false});
+
     // Open a new page
     const page = await browser.newPage();
 
     // Go to a website
     await page.goto('https://www.infowebmaster.fr/outils/generateur-nombre-aleatoire.php');
+
     // Click on an element
     await page.click('#content > form > fieldset > div.centrer > input[type=button]');
 
@@ -23,6 +25,6 @@ import puppeteer from 'puppeteer';
     // Log the value to the console
     console.log(result)
 
-    // Close the browser
+    // Close the browser instance.
     // await browser.close();
 })()

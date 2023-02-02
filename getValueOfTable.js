@@ -12,10 +12,13 @@ import puppeteer from 'puppeteer';
 (async () => {
     // Launching a new instance of Puppeteer with headless mode set to false
     const browser = await puppeteer.launch({headless: false});
+
     // Creating a new page in the instance of Puppeteer
     const page = await browser.newPage();
+
     // Navigating to a specified URL
     await page.goto('https://www.textfixer.com/html/html-table-generator.php');
+
     // Initializing an empty array to store the results
     let results = [];
 
@@ -56,4 +59,7 @@ import puppeteer from 'puppeteer';
 
     // Logging the final results array
     console.log(results);
+
+    // Close the browser instance.
+    // await browser.close()
 })();

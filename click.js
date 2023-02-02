@@ -6,8 +6,10 @@
  *
  */
 
+// Import the puppeteer library
 import puppeteer from 'puppeteer';
 
+// Wrap the code in an asynchronous function
 (async () => {
     // Launch a browser in non-headless mode
     const browser = await puppeteer.launch({headless: false});

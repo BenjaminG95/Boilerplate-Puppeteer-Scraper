@@ -5,10 +5,10 @@
  *
  */
 
-// Importing the Puppeteer library
+// Import the puppeteer library
 import puppeteer from 'puppeteer';
 
-// Declaring an async function to run the code
+// Wrap the code in an asynchronous function
 (async () => {
     // Launching a new instance of Puppeteer with headless mode set to false
     const browser = await puppeteer.launch({headless: false});

@@ -4,8 +4,10 @@
  * @desc Uses Puppeteer request interception.
  */
 
+// Import the puppeteer library
 import puppeteer from "puppeteer";
 
+// Wrap the code in an asynchronous function
 (async () => {
     // Launches a new instance of puppeteer in non-headless mode
     const browser = await puppeteer.launch({headless: false});

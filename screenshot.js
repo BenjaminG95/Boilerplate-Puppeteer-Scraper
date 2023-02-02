@@ -8,6 +8,7 @@
 // Import the puppeteer library
 import puppeteer from "puppeteer";
 
+// Wrap the code in an asynchronous function
 (async () => {
     // Launch a new instance of the browser with headless mode disabled
     const browser = await puppeteer.launch({headless: false});

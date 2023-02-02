@@ -5,8 +5,10 @@
  *
  */
 
+// Import the puppeteer library
 import puppeteer from 'puppeteer';
 
+// Wrap the code in an asynchronous function
 (async () => {
     // Launch a new browser instance with a graphical interface (headless: false)
     const browser = await puppeteer.launch({headless: false});

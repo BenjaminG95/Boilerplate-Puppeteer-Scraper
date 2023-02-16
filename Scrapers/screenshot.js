@@ -25,6 +25,12 @@ import puppeteer from "puppeteer";
     // Take a screenshot of the entire page and save it as "google.png"
     await page.screenshot({ path: 'google.png', fullPage: true });
 
+    // if you are inside a task using puppeteer scraper Actor on Apify :
+    /**
+     *  const screenshot = await page.screenshot();
+     *  await context.Apify.setValue('my-key', screenshot, { contentType: 'image/png' });
+     */
+
     // Close the browser instance
     // await browser.close();
 })()

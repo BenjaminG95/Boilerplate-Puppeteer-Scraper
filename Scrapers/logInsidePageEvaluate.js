@@ -10,7 +10,6 @@ import puppeteer from 'puppeteer';
 
 // Define an async function
 (async () => {
-
     // Launch a new instance of a browser
     const browser = await puppeteer.launch({
         headless: false, // Set headless mode to false to display the browser window

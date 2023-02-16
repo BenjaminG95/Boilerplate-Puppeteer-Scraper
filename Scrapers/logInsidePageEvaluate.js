@@ -34,7 +34,7 @@ import puppeteer from 'puppeteer';
         await window.logger(loggedMessage);
 
         // Objects and arrays can also be logged
-        loggedMessage = { toto: 'tata', tata: 'toto' };
+        loggedMessage = { toto: 'toto', tata: 'tata' };
         await window.logger(loggedMessage);
 
         loggedMessage = ['toto', 'tata'];

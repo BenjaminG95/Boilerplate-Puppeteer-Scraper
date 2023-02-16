@@ -35,5 +35,5 @@ import puppeteer from 'puppeteer';
     })
 
     // Close the browser instance
-    await browser.close();
+    // await browser.close();
 })();

@@ -32,6 +32,15 @@ import puppeteer from 'puppeteer';
 
         // Log the element's text content to the console of the IDE
         console.log(loggedMessage);
+
+        // if you need to log an object or array, you have to use JSON.stringify:
+        loggedMessage = {toto: 'tata', tata: 'toto'}
+        // Log the element's text content to the console of the IDE
+        console.log(JSON.stringify(loggedMessage));
+
+        loggedMessage = ['toto', 'tata'];
+        console.log(JSON.stringify(loggedMessage));
+
     })
 
     // Close the browser instance

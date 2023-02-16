@@ -1,8 +1,8 @@
 /**
  * @name logInsidePageEvaluate
  *
- * @desc when we want to make a console.log inside a page.evaluate, the log is made in the console of the script navigator.
- *       Here is the solution to display it in your IDE console
+ * @desc When we want to make a console.log inside a page.evaluate, the log is made in the console of the script navigator.
+ *       Here is the solution to display it in your IDE console using page.exposeFunction.
  */
 
 // Import the Puppeteer library
@@ -19,29 +19,27 @@ import puppeteer from 'puppeteer';
     // Create a new page in the browser
     const page = await browser.newPage();
 
+    // Expose a function that logs a message to the console of the IDE
+    await page.exposeFunction('logger', msg => console.log(msg));
+
     // Navigate to the Google website
     await page.goto('https://google.com');
 
-    // Listen for console events on the page and log them to the console of the IDE
-    await page.on('console', msg => console.log(msg.text()));
-
     // Execute a function on the page
-    await page.evaluate(() => {
+    await page.evaluate(async () => {
         // Find an element on the page and get its text content
-        let loggedMessage = document.querySelector('.gb_g').textContent;
+        let loggedMessage = document.querySelector('.gb_p').innerText;
 
         // Log the element's text content to the console of the IDE
-        console.log(loggedMessage);
+        await window.logger(loggedMessage);
 
-        // if you need to log an object or array, you have to use JSON.stringify:
-        loggedMessage = {toto: 'tata', tata: 'toto'}
-        // Log the element's text content to the console of the IDE
-        console.log(JSON.stringify(loggedMessage));
+        // Objects and arrays can also be logged
+        loggedMessage = { toto: 'tata', tata: 'toto' };
+        await window.logger(loggedMessage);
 
         loggedMessage = ['toto', 'tata'];
-        console.log(JSON.stringify(loggedMessage));
-
-    })
+        await window.logger(loggedMessage);
+    });
 
     // Close the browser instance
     // await browser.close();
